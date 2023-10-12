@@ -7,7 +7,9 @@ Log in/registration - Create account and log in - reveals sensitive information
 
 Used
 
-HTML, CSS, PHP, SQL, JS, Docker, Kubernetes cluster
+HTML, CSS, PHP, Apache server, SQL db, JS, Docker, Kubernetes cluster AWS
+
+Make sure Docker is installed to machiene
 
 How to build Docker Image - 
 In terminal access the root folder off "test" run command 
