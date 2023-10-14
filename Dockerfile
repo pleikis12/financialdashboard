@@ -1,5 +1,6 @@
 # Use an official PHP image as the base image
-FROM php:8-apache
+FROM php:7.4-apache
+
 
 # Set the working directory to /var/www/html
 WORKDIR /var/www/html
@@ -16,3 +17,4 @@ EXPOSE 80
 
 # Start the Apache web server
 CMD ["apache2-foreground"]
+
