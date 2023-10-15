@@ -13,7 +13,9 @@ Make sure Docker is installed to machiene
 
 How to build Docker Image - 
 In terminal access the root folder off "test" run command 
-1. docker build -t financial-dashboard . 
-2. docker-compose up 
-3. Check docker program if the image is contanerized, and images for the program has been built
-4. Test by accessing the url "localhost:8080"
+1. docker compose up --build 
+2. Check docker program if the image is contanerized, and images for the program has been built
+3. Log in to SQL database, on url "localhost:8081" "username=registration_form" "password=password"
+4. Head into registration form - Create table = users (4rows) - (id(autoincrement)),(user_name(varchar-255)),(password(varchar-255)),(name(varchar-255))
+5. Test by accessing the url "localhost:8080"
+6. Log in to access sensitive information.

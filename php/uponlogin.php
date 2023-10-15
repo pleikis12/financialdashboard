@@ -66,7 +66,7 @@ session_start();
             <span class="material-icons-sharp">add</span>
             <h3>Add Product</h3>
           </a>
-          <a href="../PHP/logout.php">
+          <a href="logout.php">
             <span class="material-icons-sharp">logout</span>
             <h3>Logout</h3>
           </a>

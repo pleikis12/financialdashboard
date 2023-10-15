@@ -1,17 +1,15 @@
-# Use an official PHP image as the base image
-FROM php:7.4-apache
+FROM docker.io/library/php:7.4-apache
+WORKDIR /var/www/html/
 
-# Set the working directory to /var/www/html
-WORKDIR /var/html/html/php
-# Copy website files into the container
-COPY ../php/ /var/www/html/php
-COPY ../img/ /var/www/html/img
-COPY ../js/ /var/www/html/js
-COPY ../css/ /var/www/html/css
+RUN apt-get update \
+ && export DEBIAN_FRONTEND=noninteractive \
+ && apt-get install -y zlib1g-dev libpng-dev libjpeg-dev libfreetype6-dev iputils-ping \
+ && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
+ && docker-php-ext-configure gd --with-jpeg --with-freetype \
+ # Use pdo_sqlite instead of pdo_mysql if you want to use sqlite
+ && docker-php-ext-install gd mysqli pdo pdo_mysql
 
-# Expose port 80
-EXPOSE 80
+COPY --chown=www-data:www-data . .  
+COPY --chown=www-data:www-data 000-default.conf /etc/apache2/sites-available/000-default.conf
 
-# Start the Apache web server
-CMD ["apache2-foreground"]
-
+#RUN chmod -R 755 ./*
