@@ -3,22 +3,27 @@ services:
   web:
     image: php:7.4-apache
     volumes:
-      - ./php:/var/www/html/php
       - ./img:/var/www/html/img
       - ./js:/var/www/html/js
       - ./css:/var/www/html/css
-      - ./index.html:/var/www/html/index.html
+      - ./php:/var/www/html/php
     ports:
       - "8080:80"
-  php:
-    image: php:7.4
-    volumes:
-      - ./php:/var/www/html/php
-      - ./img:/var/www/html/img
-      - ./js:/var/www/html/js
-      - ./css:/var/www/html/css
-      - ./index.html:/var/www/html/index.html
     networks:
       - mynetwork
+  db: 
+    image: mysql:latest
+    environment:
+      - MYSQL_DATABASE=registration_form
+      - MYSQL_USER=registration_form
+      - MYSQL_PASSWORD=password 
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1 #allowing of no password (True)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8001:80
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
 networks:
   mynetwork:
