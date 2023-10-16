@@ -19,3 +19,9 @@ In terminal access the root folder off "test" run command
 4. Head into registration form - Create table = users (4rows) - (id(autoincrement)),(user_name(varchar-255)),(password(varchar-255)),(name(varchar-255))
 5. Test by accessing the url "localhost:8080"
 6. Log in to access sensitive information.
+
+Uploading docker image on AWS -
+In terminal -
+1. docker build -t financialdashboard-docker-images .
+2. docker tag financialdashboard-docker-images:latest 317075783247.dkr.ecr.eu-north-1.amazonaws.com/financialdashboard-docker-images:latest
+3. docker push 317075783247.dkr.ecr.eu-north-1.amazonaws.com/financialdashboard-docker-images:latest
